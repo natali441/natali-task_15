@@ -1,0 +1,144 @@
+
+<hr>
+
+<h2>დავალება 1</h2>
+
+<h3>სტუდენტის ქულა: {{ score() }}</h3>
+
+<button (click)="increase()">+5</button>
+<button (click)="decrease()">-5</button>
+<button (click)="reset()">Reset</button>
+
+<hr>
+
+<h2>დავალება 2</h2>
+
+<h3>პროდუქტების რაოდენობა: {{ count() }}</h3>
+
+<button (click)="add()">დამატება</button>
+<button (click)="remove()">წაშლა</button>
+
+@if (count() === 0) {
+  <p>კალათა ცარიელია</p>
+}
+
+<h2>დავალება 3</h2>
+
+<input [type]="showPassword() ? 'text' : 'password'">
+
+<button (click)="showPassword.update(v => !v)">
+  {{ showPassword() ? 'დამალვა' : 'ჩვენება' }}
+</button>
+
+
+<h2>მაღაზიის კალკულატორი</h2>
+
+<label>ფასი:</label>
+<input
+  type="number"
+  [value]="price()"
+  (input)="price.set(+$any($event.target).value)"
+>
+
+<br>
+
+<label>რაოდენობა:</label>
+<input
+  type="number"
+  [value]="quantity()"
+  (input)="quantity.set(+$any($event.target).value)"
+>
+
+<h3>ჯამური ღირებულება</h3>
+
+<h2>სტუდენტის შედეგი</h2>
+
+<label>პირველი გამოცდა:</label>
+<input
+  type="number"
+  [value]="exam1()"
+  (input)="exam1.set(+$any($event.target).value)"
+>
+
+<br>
+
+<label>მეორე გამოცდა:</label>
+<input
+  type="number"
+  [value]="exam2()"
+  (input)="exam2.set(+$any($event.target).value)"
+>
+
+<h3>საშუალო ქულა</h3>
+
+@if (passed()) {
+  <p>ჩააბარა!</p>
+} @else {
+  <p>ვერ ჩააბარა!</p>
+}
+
+<h2>ფასდაკლების სისტემა</h2>
+
+<label>საწყისი ფასი:</label>
+<input
+  type="number"
+  [value]="price()"
+  (input)="price.set(+$any($event.target).value)"
+>
+
+<br>
+
+<label>ფასდაკლება (%):</label>
+<input
+  type="number"
+  [value]="discount()"
+  (input)="discount.set(+$any($event.target).value)"
+>
+
+<h3>ფასდაკლება: {{ discountAmount() }}</h3>
+
+<h3>საბოლოო ფასი: {{ finalPrice() }}</h3>
+
+<h2>ავტორიზაცია</h2>
+
+@if (isLoggedIn()) {
+  <h3>კეთილი იყოს თქვენი დაბრუნება!</h3>
+
+  <button (click)="logout()">გამოსვლა</button>
+} @else {
+  <h3>გთხოვთ, გაიაროთ ავტორიზაცია</h3>
+
+  <button (click)="login()">შესვლა</button>
+}
+
+<h2>ტემპერატურის ინდიკატორი</h2>
+
+<h3>ტემპერატურა: {{ temperature() }}°C</h3>
+
+<button (click)="increase()">გაზრდა</button>
+
+<button (click)="decrease()">შემცირება</button>
+
+@if (temperature() < 10) {
+  <p>ცივა</p>
+} @else if (temperature() <= 25) {
+  <p>კარგი ტემპერატურაა</p>
+} @else {
+  <p>ცხელა</p>
+}
+
+<h2>დავალებები</h2>
+
+<h3>დავალებების რაოდენობა: {{ tasks() }}</h3>
+
+<button (click)="add()">დავალების დამატება</button>
+
+<button (click)="remove()">დავალების წაშლა</button>
+
+@if (tasks() === 0) {
+  <p>დავალებები არ გაქვს</p>
+} @else {
+  <p>დავალებები: {{ tasks() }}</p>
+}
+
+
